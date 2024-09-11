@@ -28,6 +28,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <section className="flex justify-start items-center gap-7 p-10">
+          <span>Home</span>
+          <span>Components</span>
+          <span>Templates</span>
+        </section>
         {children}
       </body>
     </html>
