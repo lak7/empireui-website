@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { SiteHeader } from "@/components/site/header";
+import MouseParticles from "@/components/common/mouse-particles";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,6 +32,8 @@ export default function RootLayout({
       >
         <SiteHeader />
         {children}
+
+        {/* <MouseParticles /> */}
       </body>
     </html>
   );
