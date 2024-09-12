@@ -9,14 +9,14 @@ import ParticleImage, {
 import useWindowSize from "@rooks/use-window-size";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { LampContainer } from "@/components/ui/lamp";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { BackgroundBeams } from "@/components/ui/background-beams";
+import { BentoGridThirdDemo } from "@/components/common/landing-card";
+import CustomBento from "@/components/common/custom-bento";
 
 const particleOptions: ParticleOptions = {
   filter: ({ x, y, image }) => {
@@ -105,7 +105,7 @@ const page = () => {
           </div>
         </div>
       </div>
-      <LampContainer>
+      {/* <LampContainer>
         <motion.h1
           // initial={{ opacity: 0.5, y: 100 }}
           // whileInView={{ opacity: 1, y: 0 }}
@@ -119,8 +119,8 @@ const page = () => {
           Get into the Empire
           <br /> of components
         </motion.h1>
-      </LampContainer>
-      <div className=" w-full flex justify-center items-center -translate-y-80">
+      </LampContainer> */}
+      {/* <div className=" py-11 w-full flex justify-center items-center ">
         <ResizablePanelGroup
           direction="horizontal"
           className="max-w-5xl rounded-lg border md:min-w-[450px]"
@@ -147,33 +147,22 @@ const page = () => {
             </ResizablePanelGroup>
           </ResizablePanel>
         </ResizablePanelGroup>
-      </div>
-      {/* Joinlist */}
-      <div className="h-[40rem] w-full -translate-y-80 rounded-md bg-black relative flex flex-col items-center justify-center antialiased">
-        <div className="max-w-2xl mx-auto p-4">
-          <h1 className="relative z-10 text-lg md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  text-center font-sans font-bold">
-            COMING SOON
-          </h1>
-          <p></p>
-          <p className="text-neutral-500 max-w-lg mx-auto my-2 text-sm text-justify relative z-10">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
-          </p>
-          <input
-            type="text"
-            placeholder="foundation@empire.com"
-            className="rounded-lg border border-neutral-800 focus:ring-2 focus:ring-teal-500  w-full relative z-10 mt-4  bg-neutral-950 placeholder:text-neutral-700"
-          />
-        </div>
-        {/* <BackgroundBeams /> */}
-      </div>
+      </div> */}
+
+      {/* <div className="grid auto-rows-[192px] grid-cols-3 gap-4">
+        {[...Array(3)].map((_, i) => (
+          <div
+            key={i}
+            className={`row-span-1 rounded-xl border-2 border-slate-400/10 bg-neutral-100 p-4 dark:bg-neutral-900 ${
+              i === 3 || i === 6 ? "col-span-2" : ""
+            }`}
+          >
+            <DynamicCard />
+          </div>
+        ))}
+      </div> */}
+      {/* <BentoGridThirdDemo /> */}
+      <CustomBento />
     </section>
   );
 };
