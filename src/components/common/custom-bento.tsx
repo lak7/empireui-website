@@ -1,13 +1,19 @@
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { MoreHorizontal, Link2 } from "lucide-react";
+import { MoreHorizontal, Link2, ArrowRight } from "lucide-react";
 
 export default function CustomBento() {
   const images = [
     {
       id: 1,
-      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-miyAC6qHgw4FK6yjF1bHEmekDpY1QU.png",
+      src: "/pc1.gif",
       alt: "Foggy house on a lake",
       author: "njorthbjorn",
       likes: 905,
@@ -31,7 +37,8 @@ export default function CustomBento() {
     },
     {
       id: 3,
-      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-miyAC6qHgw4FK6yjF1bHEmekDpY1QU.png",
+      src: "/pc2.gif",
+
       alt: "Ship in a stormy sea",
       author: "Crimson Intellect",
       likes: 221,
@@ -40,6 +47,18 @@ export default function CustomBento() {
       tips: 3,
       awards: 158,
       size: "small",
+    },
+    {
+      id: 4,
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-miyAC6qHgw4FK6yjF1bHEmekDpY1QU.png",
+      alt: "Fantasy landscape",
+      author: "DreamWeaver",
+      likes: 1024,
+      comments: 156,
+      views: 789,
+      tips: 42,
+      awards: 31,
+      size: "wide",
     },
     {
       id: 4,
@@ -80,13 +99,13 @@ export default function CustomBento() {
             Your ultimate AI components library.
           </span>
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 auto-rows-[minmax(200px,auto)]">
+        <div className="grid  grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 auto-rows-[minmax(200px,auto)]">
           {images.map((image) => (
             <Card
               key={image.id}
-              className={`bg-zinc-800 border-zinc-700 overflow-hidden ${
+              className={`bg-zinc-800 border-zinc-700 max-h-[20rem] overflow-hidden ${
                 image.size === "large"
-                  ? "sm:col-span-2 sm:row-span-2"
+                  ? "sm:col-span-2 sm:row-span-1"
                   : image.size === "wide"
                   ? "sm:col-span-2"
                   : image.size === "tall"
@@ -96,26 +115,61 @@ export default function CustomBento() {
                   : ""
               }`}
             >
-              <CardContent className="p-0 relative h-full">
-                <img
+              <CardContent className="p-3 relative h-full">
+                <div className="">
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className={` h-[15rem] rounded-lg object-cover ${
+                      image.size === "large" && "w-[30rem]"
+                    }`}
+                  />
+                  w-[15rem]
+                </div>
+                {/* <div className="text-4xl my-4 shadow-yellow-300  text-zinc-300 font-semibold">
+                  Dynamic Components
+                </div>
+                <p className="text-zinc-200">
+                  Explore our collection of beautiful, responsive, and
+                  customizable UI components. Perfect for building modern web
+                  applications with ease.
+                </p> */}
+                <Button className="w-5/6 ml-2 m-5 flex justify-center items-center absolute bottom-0 bg-white text-zinc-800 font-bold">
+                  View Component
+                </Button>
+                {/* <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-full object-cover"
+                  className="w-full h-ful rounded-lg object-cover"
                 />
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  className="absolute top-2 right-2 text-white"
-                >
-                  <MoreHorizontal className="w-6 h-6" />
-                </Button>
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  className="absolute bottom-2 right-2 text-white"
-                >
-                  <Link2 className="w-6 h-6" />
-                </Button>
+                Bitch*/}
+                {/* <Card className="w-full max-w-md mx-auto overflow-hidden">
+                  <div className="relative aspect-video">
+                    <img
+                      alt="Animated component preview"
+                      className="object-cover w-full h-full"
+                      src="/placeholder.svg?height=300&width=400"
+                    />
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-2xl font-bold">
+                      Dynamic Components
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600">
+                      Explore our collection of beautiful, responsive, and
+                      customizable UI components. Perfect for building modern
+                      web applications with ease.
+                    </p>
+                  </CardContent>
+                  <CardFooter>
+                    <Button className="w-full">
+                      View Components
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </CardFooter>
+                </Card> */}
               </CardContent>
               <CardFooter className="flex flex-col p-4">
                 <div className="flex justify-between items-center w-full mb-3">
@@ -220,18 +274,16 @@ export default function CustomBento() {
             </Button>
           </div>
           <div className="flex space-x-2">
-            {["X", "Instagram", "YouTube", "Twitch", "Reddit", "GitHub"].map(
-              (icon) => (
-                <Button
-                  key={icon}
-                  size="icon"
-                  variant="ghost"
-                  className="w-6 h-6 p-0"
-                >
-                  <span className="text-xs">{icon[0]}</span>
-                </Button>
-              )
-            )}
+            {["A", "F", "O", "R", "A", "I"].map((icon) => (
+              <Button
+                key={icon}
+                size="icon"
+                variant="ghost"
+                className="w-6 h-6 p-0"
+              >
+                <span className="text-xs">{icon[0]}</span>
+              </Button>
+            ))}
           </div>
         </div>
       </footer>
