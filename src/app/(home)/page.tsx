@@ -15,8 +15,13 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { BackgroundBeams } from "@/components/ui/background-beams";
-import { BentoGridThirdDemo } from "@/components/common/landing-card";
-import CustomBento from "@/components/common/custom-bento";
+import LandingCard from "@/components/common/landing-card";
+import Footer from "@/components/common/Footer";
+import LandingCard2 from "@/components/common/landing-card2";
+import { GlowCapture, Glow } from "@codaworks/react-glow";
+import JapaneseCharacter from "@/components/common/japanese";
+import { Cursor } from "react-creative-cursor";
+import "react-creative-cursor/dist/styles.css";
 
 const particleOptions: ParticleOptions = {
   filter: ({ x, y, image }) => {
@@ -105,64 +110,34 @@ const page = () => {
           </div>
         </div>
       </div>
-      {/* <LampContainer>
-        <motion.h1
-          // initial={{ opacity: 0.5, y: 100 }}
-          // whileInView={{ opacity: 1, y: 0 }}
-          // transition={{
-          //   delay: 0.3,
-          //   duration: 0.8,
-          //   ease: "easeInOut",
-          // }}
-          className="mt-8 bg-gradient-to-br from-zinc-50 to-zinc-200 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
-        >
-          Get into the Empire
-          <br /> of components
-        </motion.h1>
-      </LampContainer> */}
-      {/* <div className=" py-11 w-full flex justify-center items-center ">
-        <ResizablePanelGroup
-          direction="horizontal"
-          className="max-w-5xl rounded-lg border md:min-w-[450px]"
-        >
-          <ResizablePanel defaultSize={50}>
-            <div className="flex h-[400px] items-center justify-center p-6">
-              <span className="font-semibold">One</span>
-            </div>
-          </ResizablePanel>
-          <ResizableHandle />
-          <ResizablePanel defaultSize={50}>
-            <ResizablePanelGroup direction="vertical">
-              <ResizablePanel defaultSize={25}>
-                <div className="flex h-full items-center justify-center p-6">
-                  <span className="font-semibold">Two</span>
-                </div>
-              </ResizablePanel>
-              <ResizableHandle />
-              <ResizablePanel defaultSize={75}>
-                <div className="flex h-full items-center justify-center p-6">
-                  <span className="font-semibold">Three</span>
-                </div>
-              </ResizablePanel>
-            </ResizablePanelGroup>
-          </ResizablePanel>
-        </ResizablePanelGroup>
+      {/* Middle Part  */}
+      {/* <div className="w-full space-y-9 flex justify-center items-center">
+        <div className="" style={{ width: "50%" }}>
+          <ScatterGraphy src="/japnese.png" shape={"square"} size={0.1} />
+        </div>
       </div> */}
+      <JapaneseCharacter />
 
-      {/* <div className="grid auto-rows-[192px] grid-cols-3 gap-4">
-        {[...Array(3)].map((_, i) => (
-          <div
-            key={i}
-            className={`row-span-1 rounded-xl border-2 border-slate-400/10 bg-neutral-100 p-4 dark:bg-neutral-900 ${
-              i === 3 || i === 6 ? "col-span-2" : ""
-            }`}
-          >
-            <DynamicCard />
-          </div>
-        ))}
-      </div> */}
-      {/* <BentoGridThirdDemo /> */}
-      <CustomBento />
+      {/* Featured Components  */}
+      <div className="flex-col mt-9  justify-center items-center container px-52 bg-black">
+        <h2 className="text-5xl text-center font-bold mb-4">
+          Featured Components
+        </h2>
+        <p className=" text-gray-400 text-center">
+          All sorts of cool components created by our community, from simple to
+          detailed and complex components.{" "}
+          <span className="text-zinc-200 font-bold">
+            Your ultimate AI components library.
+          </span>
+        </p>
+        <div className="grid grid-cols-3  justify-between gap-5 items-start container mt-16 my-6">
+          <LandingCard2 />
+          <LandingCard2 />
+          <LandingCard2 />
+        </div>
+      </div>
+
+      <Footer />
     </section>
   );
 };
