@@ -9,6 +9,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Icons } from "./icons";
 import { MainNav } from "./main-nav";
 import { MobileNav } from "./mobile-nav";
+import ThemeSwitch from "../ui/theme-switch";
 
 export function SiteHeader() {
   let pathname = usePathname();
@@ -18,7 +19,7 @@ export function SiteHeader() {
         className={cn(
           "sticky top-1 z-50 w-full px-8 text-white",
           pathname?.includes("/docs")
-            ? "-mb-12 bg-black  text-white backdrop-blur lg:backdrop-blur-xl dark:bg-white"
+            ? "-mb-12 bg-black text-white backdrop-blur lg:backdrop-blur-xl dark:bg-black"
             : "-mb-14"
         )}
       >
@@ -30,7 +31,7 @@ export function SiteHeader() {
             {!pathname?.includes("/docs") ? (
               <div className="hidden lg:block lg:w-full"></div>
             ) : null}
-            <nav className="flex items-center ">
+            <nav className="flex items-center pr-[220px]">
               <Link
                 href={siteConfig.links.github}
                 target="_blank"
@@ -65,6 +66,7 @@ export function SiteHeader() {
                   <span className="sr-only">Twitter</span>
                 </div>
               </Link>
+              <ThemeSwitch />
             </nav>
           </div>
         </div>

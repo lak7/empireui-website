@@ -12,7 +12,7 @@ export function MainNav() {
   const pathname = usePathname();
 
   return (
-    <div className="mr-4 hidden md:flex ">
+    <div className="ml-52 hidden md:flex ">
       <Link href="/" className="mr-6 flex items-center space-x-2">
         <BrainCog className="h-6 w-6" />
         <span className="hidden text-lg font-bold sm:inline-block">
@@ -21,7 +21,7 @@ export function MainNav() {
       </Link>
       <nav className="flex items-center gap-4 text-sm lg:gap-6">
         <Link
-          href="/docs/components"
+          href="/docs"
           className={cn(
             "text-base font-semibold transition-colors hover:text-foreground/80",
             pathname?.startsWith("/docs/components")
@@ -40,7 +40,7 @@ export function MainNav() {
               : "text-foreground/60"
           )}
         >
-          Themes
+          Templates
         </Link>
         {/* <Link
           href="/blocks"

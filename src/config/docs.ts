@@ -9,7 +9,7 @@ export const docsConfig: DocsConfig = {
   mainNav: [
     {
       title: "Components",
-      href: "/docs/components",
+      href: "/docs",
     },
     {
       title: "Themes",
@@ -36,16 +36,16 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
-          title: "App UI",
+          title: "AI components",
           items: [
             {
-              title: "AI Text Summariser Button",
-              href: "",
+              title: "Text Summarizer Button",
+              href: "/docs/ai-summarizer-button",
               items: [],
             },
             {
-              title: "AI Caption Generator Button",
-              href: "/docs/AI",
+              title: "Caption Generator Button",
+              href: "/docs/ai-caption-generator-button",
               items: [],
             },
           ],

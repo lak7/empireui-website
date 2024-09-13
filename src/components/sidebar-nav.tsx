@@ -17,7 +17,7 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
     <div className="w-full">
       {items.map((item, index) => (
         <div key={index} className={cn("pb-4")}>
-          <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold text-black">
+          <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
             {item.title}
           </h4>
           {item?.items?.length && (
@@ -59,10 +59,10 @@ function NavItem({ item, pathname }: NavItemProps) {
   if (hasChildren) {
     return (
       <div>
-        <span className="flex w-full cursor-default items-center rounded-md p-2 text-xs font-medium text-muted-foreground">
+        <span className="flex w-full cursor-default items-center rounded-md p-2 text-xs font-medium text-zinc-400">
           {item.title}
         </span>
-        <div className="ml-3 border-l border-border pl-3">
+        <div className="ml-3 border-l border-zinc-800">
           <DocsSidebarNavItems items={item.items} pathname={pathname} />
         </div>
       </div>
@@ -74,16 +74,18 @@ function NavItem({ item, pathname }: NavItemProps) {
       <Link
         href={item.href}
         className={cn(
-          "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline",
+          "group flex w-full text-md pl-4 items-center font-medium rounded-md border border-transparent px-2 py-2 hover:underline",
           item.disabled && "cursor-not-allowed opacity-60",
-          isActive ? "font-medium text-foreground" : "text-muted-foreground"
+          isActive
+            ? "text-foreground border-l-2 border-l-white"
+            : "text-zinc-400"
         )}
         target={item.external ? "_blank" : ""}
         rel={item.external ? "noreferrer" : ""}
       >
         {item.title}
         {item.label && (
-          <span className="ml-2 rounded-md bg-white px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+          <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
             {item.label}
           </span>
         )}
