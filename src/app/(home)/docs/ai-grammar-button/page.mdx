@@ -1,8 +1,11 @@
 import { AIGrammarButtonExample } from "@/components/examples/AIGrammarButtonExample";
 import ComponentCodePreview from "@/components/component-code-preview";
 import ComponentInstall from "@/components/component-install";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 
-# AI Text Summarizer Button
+<Breadcrumbs title={"Grammar check button"} />
+
+# AI Grammar Check Button
 
 ---
 
@@ -18,6 +21,7 @@ A simple AI-powered button that proofreads selected text on the webpage for gram
 ---
 
 <ComponentInstall
+  dependencies={"framer-motion lucide-react @radix-ui/react-tooltip"}
   componentFilePath={"core/AIGrammarCheckButton"}
   routeFilePath={"buttons/AIGrammarCheckButton"}
   cli={"npx empire@latest add ai-grammar-button"}

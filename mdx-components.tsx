@@ -24,13 +24,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     th: (props) => (
       <th
-        className="border border-zinc-800 px-4 py-2 text-sm font-bold text-gray-300"
+        className="border dark:border-zinc-800 px-4 py-2 text-sm font-bold text-gray-300"
         {...props}
       />
     ),
     td: (props) => (
       <td
-        className="border border-zinc-800 px-4 py-2 text-sm text-white"
+        className="border dark:border-zinc-800 px-4 py-2 text-sm text-white"
         {...props}
       />
     ),
