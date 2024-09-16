@@ -2,27 +2,27 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import { Zap } from "lucide-react";
+import { SquarePen } from "lucide-react";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { cn } from "@/lib/utils";
 
-const useAISummarizer = () => {
-  const [isSummarizing, setIsSummarizing] = React.useState(false);
-  const [summary, setSummary] = React.useState<string>("");
-  const summaryRef = React.useRef<HTMLDivElement>(null);
+const useAIGrammerChecker = () => {
+  const [isChecking, setIsChecking] = React.useState(false);
+  const [correction, setCorrection] = React.useState<string>("");
+  const correctionRef = React.useRef<HTMLDivElement>(null);
 
   const handleSummarize = async (selectedText: string) => {
     if (!selectedText) {
       return;
     }
 
-    setIsSummarizing(true);
-    setSummary("");
+    setIsChecking(true);
+    setCorrection("");
 
     try {
-      const response = await fetch("/api/buttons/AISummarizerButton", {
+      const response = await fetch("/api/buttons/AIGrammarCheckButton", {
         method: "POST",
-        body: `Summarize the following text: ${selectedText}`,
+        body: `correct the grammar and style of the following text: ${selectedText}`,
       });
 
       if (!response.ok) {
@@ -39,27 +39,26 @@ const useAISummarizer = () => {
         };
         if (done) break;
         const chunk = decoder.decode(value);
-        setSummary((prev) => prev + chunk);
+        setCorrection((prev) => prev + chunk);
       }
     } catch (error) {
-      console.error("Error summarizing text:", error);
-      alert("An error occurred while summarizing the text. Please try again.");
+      console.error("Error corerecting text:", error);
     } finally {
-      setIsSummarizing(false);
+      setIsChecking(false);
     }
   };
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
-      summaryRef.current &&
-      !summaryRef.current.contains(event.target as Node)
+      correctionRef.current &&
+      !correctionRef.current.contains(event.target as Node)
     ) {
-      setSummary("");
+      setCorrection("");
     }
   };
 
   React.useEffect(() => {
-    if (summary) {
+    if (correction) {
       document.addEventListener("mousedown", handleClickOutside);
     } else {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -68,27 +67,27 @@ const useAISummarizer = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [summary]);
+  }, [correction]);
 
-  return { isSummarizing, summary, handleSummarize, summaryRef };
+  return { isChecking, correction, handleSummarize, correctionRef };
 };
 
-interface AISummarizerButtonProps {
+interface AIGrammarCheckButtonProps {
   className?: string;
   buttonClassName?: string;
   tooltipClassName?: string;
-  summaryClassName?: string;
+  correctionClassName?: string;
 }
 
-const AISummarizerButton: React.FC<AISummarizerButtonProps> = ({
+const AIGrammarCheckButton: React.FC<AIGrammarCheckButtonProps> = ({
   className,
   buttonClassName,
   tooltipClassName,
-  summaryClassName,
+  correctionClassName,
   ...props
 }) => {
-  const { isSummarizing, summary, handleSummarize, summaryRef } =
-    useAISummarizer();
+  const { isChecking, correction, handleSummarize, correctionRef } =
+    useAIGrammerChecker();
 
   const handleClick = async () => {
     const selectedText = window.getSelection()?.toString();
@@ -108,12 +107,12 @@ const AISummarizerButton: React.FC<AISummarizerButtonProps> = ({
                 "p-3 bg-white text-zinc-800 border-2 border-black rounded-full transition-colors duration-200 hover:bg-zinc-100 hover:text-zinc-700",
                 buttonClassName
               )}
-              disabled={isSummarizing}
+              disabled={isChecking}
             >
-              <Zap
-                className={cn("h-6 w-6", isSummarizing ? "animate-pulse" : "")}
+              <SquarePen
+                className={cn("h-6 w-6", isChecking ? "animate-pulse" : "")}
               />
-              <span className="sr-only">Summarize selected text</span>
+              <span className="sr-only">Check selected text</span>
             </motion.button>
           </Tooltip.Trigger>
           <Tooltip.Content
@@ -125,25 +124,27 @@ const AISummarizerButton: React.FC<AISummarizerButtonProps> = ({
             sideOffset={8}
             {...props}
           >
-            Summarize selected text
+            Check selected text
           </Tooltip.Content>
         </Tooltip.Root>
       </Tooltip.Provider>
-      {summary && (
+      {correction && (
         <div
-          ref={summaryRef}
+          ref={correctionRef}
           className={cn(
             "absolute top-full mt-4 w-[600px] max-h-80 p-4 border border-zinc-800 bg-zinc-950 rounded-[0.5rem] shadow-md overflow-y-auto",
             "scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-zinc-400 scrollbar-track-gray-100",
-            summaryClassName
+            correctionClassName
           )}
         >
-          <h3 className="text-lg font-semibold mb-3 text-zinc-200">Summary:</h3>
-          <p className="text-sm text-zinc-200 leading-relaxed">{summary}</p>
+          <h3 className="text-lg font-semibold mb-3 text-zinc-200">
+            Correction:
+          </h3>
+          <p className="text-sm text-zinc-200 leading-relaxed">{correction}</p>
         </div>
       )}
     </div>
   );
 };
 
-export { AISummarizerButton };
+export { AIGrammarCheckButton };

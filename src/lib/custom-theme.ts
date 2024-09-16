@@ -10,5 +10,7 @@ export const noir = createCssVariablesTheme({
 
 export const min_dark = createCssVariablesTheme({
   name: "min-dark",
-  variableDefaults: {},
+  variableDefaults: {
+    background: "#18181b",
+  },
 });

@@ -44,6 +44,11 @@ export const docsConfig: DocsConfig = {
               items: [],
             },
             {
+              title: "Grammar Check Button",
+              href: "/docs/ai-grammar-button",
+              items: [],
+            },
+            {
               title: "Caption Generator Button",
               href: "/docs/ai-caption-generator-button",
               items: [],

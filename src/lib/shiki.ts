@@ -9,12 +9,12 @@ export const codeToHtml = async ({
   lang: string;
 }) => {
   const highlighter = await createHighlighter({
-    themes: ["min-dark"],
+    themes: [noir],
     langs: [...Object.keys(bundledLanguages)],
   });
 
   return highlighter.codeToHtml(code, {
     lang: lang,
-    theme: "min-dark",
+    theme: "noir",
   });
 };

@@ -5,14 +5,21 @@ import { extractCodeFromFilePath } from "@/lib/code";
 
 type ComponentInstallProps = {
   cli: string;
-  filePath: string;
+  componentFilePath: string;
+  routeFilePath: string;
 };
 
 export default function ComponentInstall({
-  filePath,
+  componentFilePath,
+  routeFilePath,
   cli,
 }: ComponentInstallProps) {
-  const fileContent = extractCodeFromFilePath(`src/components/${filePath}.tsx`);
+  const ComponentFileContent = extractCodeFromFilePath(
+    `src/components/${componentFilePath}.tsx`
+  );
+  const routeFileContent = extractCodeFromFilePath(
+    `src/app/api/${routeFilePath}/route.ts`
+  );
   const cliCommand = cli;
 
   return (
@@ -21,6 +28,7 @@ export default function ComponentInstall({
         <TabsList className="mb-4">
           <TabsTrigger value="cli">CLI</TabsTrigger>
           <TabsTrigger value="manual">Manual</TabsTrigger>
+          <TabsTrigger value="route">API route</TabsTrigger>
         </TabsList>
         <TabsContent value="cli" className="rounded-[7px]">
           <CodePreview code={cliCommand}>
@@ -28,8 +36,13 @@ export default function ComponentInstall({
           </CodePreview>
         </TabsContent>
         <TabsContent value="manual" className="rounded-[7px]">
-          <CodePreview code={fileContent}>
-            <CodeRenderer code={fileContent} lang="tsx" />
+          <CodePreview code={ComponentFileContent}>
+            <CodeRenderer code={ComponentFileContent} lang="tsx" />
+          </CodePreview>
+        </TabsContent>
+        <TabsContent value="route" className="rounded-[7px]">
+          <CodePreview code={routeFileContent}>
+            <CodeRenderer code={routeFileContent} lang="tsx" />
           </CodePreview>
         </TabsContent>
       </Tabs>
