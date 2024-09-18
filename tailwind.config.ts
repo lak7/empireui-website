@@ -1,7 +1,9 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+
   darkMode: "class", // Corrected from ["class"] to "class"
+
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -58,10 +60,8 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"), // Existing plugin
-    require("@codaworks/react-glow/tailwind"), // Added plugin
-  ],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography"), require("@codaworks/react-glow/tailwind"),],
+
 };
 
 export default config;
