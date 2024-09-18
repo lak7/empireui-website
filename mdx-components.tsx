@@ -30,7 +30,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     td: (props) => (
       <td
-        className="border dark:border-zinc-800 px-4 py-2 text-sm text-white"
+        className="border dark:border-zinc-800 px-4 py-2 text-sm text-black dark:text-white"
         {...props}
       />
     ),

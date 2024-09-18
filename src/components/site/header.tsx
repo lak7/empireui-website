@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
+import { CommandMenu } from "@/components/command-menu";
 import { Icons } from "./icons";
 import { MainNav } from "./main-nav";
 import { MobileNav } from "./mobile-nav";
@@ -17,21 +18,21 @@ export function SiteHeader() {
     <>
       <header
         className={cn(
-          "sticky top-1 z-50 w-full px-8 text-white",
+          "sticky top-0 z-50 w-full    ",
           pathname?.includes("/docs")
-            ? "-mb-12 bg-black text-white backdrop-blur lg:backdrop-blur-xl dark:bg-black"
+            ? "-mb-12 bg-[#FAFAFA]   backdrop-blur supports-[backdrop-filter]:bg-background/60 lg:backdrop-blur-xl dark:bg-[#171517]"
             : "-mb-14"
         )}
       >
         {/* <header className="sticky top-0 z-50 w-full -mb-12  lg:backdrop-blur-xl backdrop-filter bg-gradientTopRightLightHeaderSm/70  md:bg-gradientTopRightLightHeader  backdrop-blur supports-[backdrop-filter]:bg-background/60 "> */}
-        <div className="container flex h-14 max-w-screen-2xl items-center ">
+        <div className="container flex h-14 max-w-screen-2xl items-center md:pr-56">
           <MainNav />
           <MobileNav />
           <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-            {!pathname?.includes("/docs") ? (
-              <div className="hidden lg:block lg:w-full"></div>
-            ) : null}
-            <nav className="flex items-center pr-[220px]">
+            <div className="w-full flex-1 md:w-auto md:flex-none">
+              <CommandMenu />
+            </div>
+            <nav className="flex items-center ">
               <Link
                 href={siteConfig.links.github}
                 target="_blank"
@@ -66,7 +67,7 @@ export function SiteHeader() {
                   <span className="sr-only">Twitter</span>
                 </div>
               </Link>
-              <ThemeSwitch />
+              {pathname?.includes("/docs") ? <ThemeSwitch /> : null}
             </nav>
           </div>
         </div>

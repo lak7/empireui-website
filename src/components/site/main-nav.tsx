@@ -24,7 +24,7 @@ export function MainNav() {
           href="/docs"
           className={cn(
             "text-base font-semibold transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/docs/components")
+            pathname?.startsWith("/docs")
               ? "text-foreground"
               : "text-foreground/60"
           )}
@@ -32,7 +32,7 @@ export function MainNav() {
           Components
         </Link>
         <Link
-          href="/themes"
+          href="/templates"
           className={cn(
             "text-base font-semibold transition-colors hover:text-foreground/80",
             pathname?.startsWith("/themes")
