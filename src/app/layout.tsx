@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono";
 import { SiteHeader } from "@/components/site/header";
 import { ThemeProvider } from "@/components/providers";
 
+
 export const metadata: Metadata = {
   title: "EmpireUI",
   description:
