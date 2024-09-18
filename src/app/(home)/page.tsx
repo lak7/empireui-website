@@ -9,18 +9,9 @@ import ParticleImage, {
 import useWindowSize from "@rooks/use-window-size";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/components/ui/resizable";
-import { BackgroundBeams } from "@/components/ui/background-beams";
-import LandingCard from "@/components/common/landing-card";
 import Footer from "@/components/common/Footer";
 import LandingCard2 from "@/components/common/landing-card2";
-import { GlowCapture, Glow } from "@codaworks/react-glow";
 import JapaneseCharacter from "@/components/common/japanese";
-import { Cursor } from "react-creative-cursor";
 import "react-creative-cursor/dist/styles.css";
 
 const particleOptions: ParticleOptions = {
